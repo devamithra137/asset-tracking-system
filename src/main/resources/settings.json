@@ -1,0 +1,7 @@
+{
+  "db": {
+    "url": "jdbc:mysql://localhost:3306/asset_tracking_db",
+    "username": "root",
+    "password": "2022"
+  }
+}

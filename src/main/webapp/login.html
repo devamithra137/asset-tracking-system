@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Asset Tracking System</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="login-page">
+    <div class="login-container">
+        <div class="login-box">
+            <div class="login-header">
+                <h1>Asset Tracking System</h1>
+                <p>Please login to continue</p>
+            </div>
+            
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" required **autocomplete="username"**>
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required **autocomplete="current-password"**>
+                </div>
+                
+                <div id="errorMessage" class="error-message" style="display: none;"></div>
+                
+                <button type="submit" class="btn btn-primary btn-block">Login</button>
+            </form>
+            
+            <div class="login-footer">
+                <p><strong>Demo Credentials:</strong></p>
+                <p>Admin: admin / admin123</p>
+                <p>Manager: manager1 / manager123</p>
+                <p>User: user1 / user123</p>
+            </div>
+        </div>
+    </div>
+    <script src="./js/app.js"></script>
+    
+     
+
+    <script>
+        // Note: The variable 'api' and 'context' must be defined in 'app.js' .
+        // or a global scope for this script to work.
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('loginForm').addEventListener('submit', function(e) {
+                // This line is crucial and correctly prevents the page from reloading/flickering
+                e.preventDefault(); 
+                
+                const username = document.getElementById('username').value;
+                const password = document.getElementById('password').value;
+                
+                const context = window.location.pathname.split("/")[1];
+                
+                // IMPORTANT: The variable `api` must be defined globally (likely in app.js)
+                fetch("./api/auth/login", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                    body: `username=${username}&password=${password}`
+                })
+
+
+
+                .then(response => {
+                    // Check for a non-200 status code to handle API errors cleanly
+                    if (!response.ok) {
+                        // Throw an error or handle the non-JSON response if necessary
+                        return response.json().catch(() => ({ success: false, message: 'Server error occurred.' }));
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    if (data.success) {
+                    	console.log("Saving to localStorage:", data.user);
+                    	localStorage.setItem("user", JSON.stringify(data.user));
+                    	console.log("Saved:", localStorage.getItem("user"));
+
+
+
+                        if (data.user.role === 'ADMINISTRATOR') {
+                        	window.location.href = '/assettrackingsystem/admin-dashboard.html';
+;
+                        } else if (data.user.role === 'INVENTORY_MANAGER') {
+                            window.location.href = '/assettrackingsystem/manager-dashboard.html';
+                        } else {
+                            window.location.href = '/assettrackingsystem/user-dashboard.html';
+                        }
+                    } else {
+                        document.getElementById('errorMessage').textContent = data.message || 'Invalid username or password.';
+                        document.getElementById('errorMessage').style.display = 'block';
+                    }
+                })
+                .catch(error => {
+                    console.error('Fetch error:', error);
+                    document.getElementById('errorMessage').textContent = 'Could not connect to the server.';
+                    document.getElementById('errorMessage').style.display = 'block';
+                });
+            });
+        });
+    </script>
+    
+</body>
+</html>

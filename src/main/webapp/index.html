@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asset Tracking System - Home</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .landing-page {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .landing-header {
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: white;
+        }
+        
+        .landing-header h1 {
+            font-size: 24px;
+            margin: 0;
+        }
+        
+        .landing-header .btn {
+            background: white;
+            color: #667eea;
+        }
+        
+        .hero-section {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 50px;
+            text-align: center;
+            color: white;
+        }
+        
+        .hero-content h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        .hero-content p {
+            font-size: 20px;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+        
+        .hero-actions {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+        }
+        
+        .hero-actions .btn {
+            padding: 15px 40px;
+            font-size: 16px;
+            border-radius: 30px;
+        }
+        
+        .features-section {
+            background: white;
+            padding: 80px 50px;
+        }
+        
+        .features-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .features-container h2 {
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 50px;
+            color: #2c3e50;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+        
+        .feature-card {
+            text-align: center;
+            padding: 30px;
+            border-radius: 10px;
+            background: #f8f9fa;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #667eea 0%, #1f3157 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: white;
+            font-size: 36px;
+        }
+        
+        .feature-card h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+        
+        .feature-card p {
+            color: #7f8c8d;
+            line-height: 1.6;
+        }
+        
+        .footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 30px;
+        }
+        
+        @media (max-width: 768px) {
+            .landing-header {
+                padding: 20px;
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .hero-content h1 {
+                font-size: 32px;
+            }
+            
+            .hero-content p {
+                font-size: 16px;
+            }
+            
+            .hero-actions {
+                flex-direction: column;
+            }
+            
+            .features-section {
+                padding: 50px 20px;
+            }
+        }
+    </style>
+</head>
+<body class="landing-page">
+    <header class="landing-header">
+        <h1>🏢 Asset Tracker</h1>
+        <a href="login.html" class="btn">Login</a>
+    </header>
+    
+    <section class="hero-section">
+        <div class="hero-content">
+            <h1>Asset Tracking Made Simple</h1>
+            <p>Manage, track, and optimize your organization's assets with ease</p>
+            <div class="hero-actions">
+                <a href="login.html" class="btn btn-primary">Get Started</a>
+                <a href="#features" class="btn btn-secondary">Learn More</a>
+            </div>
+        </div>
+    </section>
+    
+    <section id="features" class="features-section">
+        <div class="features-container">
+            <h2>Powerful Features</h2>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">📦</div>
+                    <h3>Asset Management</h3>
+                    <p>Track all your assets in one centralized system. Monitor status, location, and assignment in real-time.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">👥</div>
+                    <h3>User Roles</h3>
+                    <p>Three-tier role system with User, Inventory Manager, and Administrator access levels.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">📋</div>
+                    <h3>Request Workflow</h3>
+                    <p>Streamlined asset request and approval process with complete audit trail.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3>Analytics & Reports</h3>
+                    <p>Get insights into asset utilization, inventory value, and allocation patterns.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🔒</div>
+                    <h3>Secure Access</h3>
+                    <p>Role-based access control ensures data security and proper authorization.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Real-time Updates</h3>
+                    <p>Instant notifications and status updates keep everyone informed.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="features-section" style="background: #ecf0f1;">
+        <div class="features-container">
+            <h2>How It Works</h2>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h3>Step 1: Login</h3>
+                    <p>Access the system with your assigned role - User, Manager, or Administrator.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <h3>Step 2: Request Assets</h3>
+                    <p>Browse available assets and submit requests for items you need.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <h3>Step 3: Get Approved</h3>
+                    <p>Managers review and approve requests, then assign assets to users.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="features-section">
+        <div class="features-container" style="text-align: center;">
+            <h2>Ready to Get Started?</h2>
+            <p style="font-size: 18px; color: #7f8c8d; margin-bottom: 30px;">
+                Join organizations using our asset tracking system
+            </p>
+            <a href="login.html" class="btn btn-primary" style="padding: 15px 50px; font-size: 18px;">
+                Login Now
+            </a>
+            
+            <div style="margin-top: 50px; padding: 30px; background: #f8f9fa; border-radius: 10px;">
+                <h3 style="margin-bottom: 20px; color: #2c3e50;">Demo Credentials</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; text-align: left;">
+                    <div>
+                        <strong style="color: #667eea;">Administrator</strong><br>
+                        Username: admin<br>
+                        Password: admin123
+                    </div>
+                    <div>
+                        <strong style="color: #667eea;">Inventory Manager</strong><br>
+                        Username: manager1<br>
+                        Password: manager123
+                    </div>
+                    <div>
+                        <strong style="color: #667eea;">Regular User</strong><br>
+                        Username: user1<br>
+                        Password: user123
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer class="footer">
+        <p>&copy; 2024 Asset Tracking System. All rights reserved.</p>
+        <p>Built with Java, JDBC, SQL, HTML, CSS & JavaScript</p>
+    </footer>
+</body>
+</html>

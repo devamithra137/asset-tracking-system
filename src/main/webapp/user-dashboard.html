@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard - Asset Tracking System</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="dashboard">
+        <nav class="sidebar">
+            <div class="sidebar-header">
+                <h2>Asset Tracker</h2>
+                <p id="userInfo"></p>
+            </div>
+            
+            <ul class="nav-menu">
+                <li><a href="#" data-tab="dashboard" class="active">Dashboard</a></li>
+                <li><a href="#" data-tab="myassets">My Assets</a></li>
+                <li><a href="#" data-tab="available">Available Assets</a></li>
+                <li><a href="#" data-tab="requests">My Requests</a></li>
+            </ul>
+            
+            <div class="sidebar-footer">
+                <button id="logoutBtn" class="btn btn-secondary btn-block">Logout</button>
+            </div>
+        </nav>
+        
+        <main class="main-content">
+            <!-- Dashboard Tab -->
+            <div id="dashboard" class="tab-content active">
+                <h1>User Dashboard</h1>
+                
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <h3>My Assets</h3>
+                        <p class="stat-number" id="myAssetsCount">0</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Pending Requests</h3>
+                        <p class="stat-number" id="pendingRequestsCount">0</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Available Assets</h3>
+                        <p class="stat-number" id="availableAssetsCount">0</p>
+                    </div>
+                </div>
+                
+                <div class="section">
+                    <h2>My Current Assets</h2>
+                    <div id="currentAssetsList"></div>
+                </div>
+            </div>
+            
+            <!-- My Assets Tab -->
+            <div id="myassets" class="tab-content">
+                <h1>My Assets</h1>
+                
+                <div class="table-container">
+                    <table id="myAssetsTable">
+                        <thead>
+                            <tr>
+                                <th>Asset Tag</th>
+                                <th>Name</th>
+                                <th>Category</th>
+                                <th>Location</th>
+                                <th>Assigned Date</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="myAssetsTableBody"></tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <!-- Available Assets Tab -->
+            <div id="available" class="tab-content">
+                <h1>Available Assets</h1>
+                
+                <div class="filter-bar">
+                    <input type="text" id="assetSearch" placeholder="Search assets...">
+                    <select id="categoryFilter">
+                        <option value="">All Categories</option>
+                        <option value="Laptop">Laptop</option>
+                        <option value="Monitor">Monitor</option>
+                        <option value="Mobile">Mobile</option>
+                        <option value="Tablet">Tablet</option>
+                    </select>
+                </div>
+                
+                <div class="table-container">
+                    <table id="availableAssetsTable">
+                        <thead>
+                            <tr>
+                                <th>Asset Tag</th>
+                                <th>Name</th>
+                                <th>Category</th>
+                                <th>Location</th>
+                                <th>Description</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="availableAssetsTableBody"></tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <!-- Requests Tab -->
+            <div id="requests" class="tab-content">
+                <h1>My Requests</h1>
+                
+                <div class="table-container">
+                    <table id="requestsTable">
+                        <thead>
+                            <tr>
+                                <th>Request ID</th>
+                                <th>Asset</th>
+                                <th>Type</th>
+                                <th>Request Date</th>
+                                <th>Status</th>
+                                <th>Notes</th>
+                            </tr>
+                        </thead>
+                        <tbody id="requestsTableBody"></tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+    
+    <!-- Request Modal -->
+    <div id="requestModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 id="requestModalTitle">Request Asset</h2>
+            <form id="requestForm">
+                <input type="hidden" name="assetId" id="requestAssetId">
+                <input type="hidden" name="requestType" id="requestType">
+                
+                <div class="form-group">
+                    <label>Asset</label>
+                    <input type="text" id="requestAssetName" readonly>
+                </div>
+                
+                <div class="form-group">
+                    <label>Notes</label>
+                    <textarea name="notes" placeholder="Add any additional notes..."></textarea>
+                </div>
+                
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">Submit Request</button>
+                    <button type="button" class="btn btn-secondary" onclick="closeModal('requestModal')">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <script src="js/app.js"></script>
+</body>
+</html>
